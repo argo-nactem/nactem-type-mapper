@@ -1,0 +1,10 @@
+NaCTeM Type Mapper
+Copyright 2016 The National Centre for Text Mining, University of Manchester
+
+Licensed under GNU Lesser General Public Release, Version 3.0
+
+This project includes:
+  ANTLR 4 Runtime under The BSD License
+  Apache UIMA Base: uimaj-core under The Apache Software License, Version 2.0
+  Nactem Type Mapper under LGPL-3.0
+

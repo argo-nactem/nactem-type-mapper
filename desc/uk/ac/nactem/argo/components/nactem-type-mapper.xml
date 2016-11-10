@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Nactem Type Mapper - A UIMA component which is able to create new annotations from existing ones, using a mapping definition language
+    Copyright © 2016 The National Centre for Text Mining (NaCTeM), University of Manchester (jacob.carter@manchester.ac.uk)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>uk.ac.nactem.argo.components.typemapper.NactemTypeMapper</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>NaCTeM Type Mapper</name>
+    <description/>
+    <version>1.0</version>
+    <vendor>NaCTeM</vendor>
+    <configurationParameters>
+      <configurationParameter>
+        <name>mappingDefinition</name>
+        <description>Definition of mappings from source types to target types.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>ignoreMissingSourceType</name>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>ignoreMissingTargetType</name>
+        <type>Boolean</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>ignoreMissingSourceType</name>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>ignoreMissingTargetType</name>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription/>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

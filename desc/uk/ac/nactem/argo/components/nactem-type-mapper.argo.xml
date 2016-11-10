@@ -1,0 +1,31 @@
+<!--
+
+    Nactem Type Mapper - A UIMA component which is able to create new annotations from existing ones, using a mapping definition language
+    Copyright © 2016 The National Centre for Text Mining (NaCTeM), University of Manchester (jacob.carter@manchester.ac.uk)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<argoDescriptor>
+	<configurationParametersMetaData>
+		<configurationParameterMetaData>
+			<name>mappingDefinition</name>
+			<uiType>text</uiType>
+			<uiConfiguration>
+				<characterWidth>40</characterWidth>
+				<visibleLines>6</visibleLines>
+			</uiConfiguration>
+		</configurationParameterMetaData>
+	</configurationParametersMetaData>
+</argoDescriptor>
