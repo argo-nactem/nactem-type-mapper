@@ -287,77 +287,7 @@
 		</profile>
 	</profiles>
 
-	<repositories>
-		<repository>
-			<id>repo1.maven.org</id>
-			<name>Main Maven Repository</name>
-			<url>http://repo1.maven.org/maven2/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>nactem-thirdparty</id>
-			<name>Nactem Maven Repository</name>
-			<url>http://code.nactem.ac.uk/nexus/content/repositories/thirdparty</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>nactem</id>
-			<name>Nactem Maven Repository</name>
-			<url>http://code.nactem.ac.uk/nexus/content/repositories/releases</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>nactem-snapshot</id>
-			<name>Nactem Snapshot Repository</name>
-			<url>http://code.nactem.ac.uk/nexus/content/repositories/snapshots</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>repo1.maven.org</id>
-			<name>Main Maven Repository</name>
-			<url>http://repo1.maven.org/maven2/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>nactem</id>
-			<name>Nactem Maven Repository</name>
-			<url>http://code.nactem.ac.uk/nexus/content/repositories/releases</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
-	<distributionManagement>
-		<repository>
-			<id>nactem</id>
-			<name>Nactem Maven Repository</name>
-			<uniqueVersion>false</uniqueVersion>
-			<url>http://code.nactem.ac.uk/nexus/content/repositories/releases</url>
-			<layout>default</layout>
-		</repository>
-		<snapshotRepository>
-			<id>nactem-snapshot</id>
-			<name>Nactem Snapshot Repository</name>
-			<uniqueVersion>false</uniqueVersion>
-			<url>http://code.nactem.ac.uk/nexus/content/repositories/snapshots</url>
-			<layout>default</layout>
-		</snapshotRepository>
-	</distributionManagement>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.uima</groupId>
