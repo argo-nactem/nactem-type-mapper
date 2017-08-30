@@ -31,6 +31,8 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.TypeSystem;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.descriptor.ResourceMetaData;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import uk.ac.nactem.argo.components.typemapper.FSReference.ArrayReference;
@@ -41,43 +43,44 @@ import uk.ac.nactem.argo.components.typemapper.TypeMap.FeatureMap;
 import uk.ac.nactem.argo.components.typemapper.TypeMap.FeaturePath;
 import uk.ac.nactem.argo.components.typemapper.TypeMapBuilder.ParseException;
 
-
+/**
+ * 
+ * @author NaCTeM - National Centre of Text Mining
+ */
+@ResourceMetaData(name="NaCTeM Type Mapper")
 public class NactemTypeMapper extends CasAnnotator_ImplBase {
+	
+	/**
+	 * Definition of mappings from source types to target types.
+	 */
 	public static final String PARAM_NAME_MAP = "mappingDefinition";
+	@ConfigurationParameter(name = PARAM_NAME_MAP,  mandatory = true)
+	private String mappingDefinition;
+	
 	public static final String PARAM_NAME_IGNORE_MISSING_SOURCE = "ignoreMissingSourceType";
+	@ConfigurationParameter(name = PARAM_NAME_IGNORE_MISSING_SOURCE, defaultValue = "true", mandatory = false)
+	private boolean ignoreMissingSourceType;
+	
 	public static final String PARAM_NAME_IGNORE_MISSING_TARGET = "ignoreMissingTargetType";
+	@ConfigurationParameter(name = PARAM_NAME_IGNORE_MISSING_TARGET, defaultValue = "false", mandatory = false)
+	private boolean ignoreMissingTargetType;
 
 	private List<TypeMap> typeMaps = null;
-	private boolean ignoreMissingSourceType = true;
-	private boolean ignoreMissingTargetType = false;
-
 	private TypeSystem currentTs = null;
 	private int currentMapIdx = 0;
-
 
 	@Override
 	public void initialize(UimaContext context)
 			throws ResourceInitializationException {
 		super.initialize(context);
-		String mapString = (String) context.getConfigParameterValue(PARAM_NAME_MAP);
 		try {
-			typeMaps = TypeMapBuilder.build(mapString);
+			typeMaps = TypeMapBuilder.build(mappingDefinition);
 		} catch (ParseException e) {
 			throw new ResourceInitializationException(e);
 		}
 
 		if (typeMaps==null || typeMaps.size()==0) {
 			throw new ResourceInitializationException(new Exception("No type mapping defined."));
-		}
-		try {
-			ignoreMissingSourceType = (Boolean) context.getConfigParameterValue(PARAM_NAME_IGNORE_MISSING_SOURCE);
-		} catch (NullPointerException e) {
-			ignoreMissingSourceType = false;
-		}
-		try {
-			ignoreMissingTargetType = (Boolean) context.getConfigParameterValue(PARAM_NAME_IGNORE_MISSING_TARGET);
-		} catch (NullPointerException e) {
-			ignoreMissingTargetType = false;
 		}
 	}
 

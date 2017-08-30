@@ -24,12 +24,12 @@
 	<parent>
 		<groupId>uk.ac.nactem.argo</groupId>
 		<artifactId>argo-starter-components</artifactId>
-		<version>0.4</version>
+		<version>0.5</version>
 	</parent>
 
 	<groupId>uk.ac.nactem.argo.components</groupId>
 	<artifactId>nactem-type-mapper</artifactId>
-	<version>1.0</version>
+	<version>1.0.1</version>
 
 	<name>Nactem Type Mapper</name>
 	<inceptionYear>2016</inceptionYear>
@@ -49,11 +49,52 @@
 	</licenses>
 
 	<properties>
-		<component.descriptor>desc/uk/ac/nactem/argo/NactemTypeMapper.xml</component.descriptor>
-	
 		<antlr4.visitor>true</antlr4.visitor>
 		<antlr4.listener>true</antlr4.listener>
 	</properties>
+	
+	<dependencies>
+		<!-- !!! VERY IMPORTANT !!! -->
+		<!-- All type system dependencies must be redeclared here but with their 
+			<scope> value set to provided. This is to prevent the type systems being 
+			included inside the generated PEAR file; type systems should be independently 
+			installed into an Argo instance. If a type system gets included inside a 
+			PEAR file then workflow executions will normally fail, complaining of missing 
+			classes associated with UIMA types. -->
+		<!-- Eventually Argo should support installation of components and type 
+			systems from Maven, which will automatically deal with type system dependencies 
+			and avoid the need for this profile. -->
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4-runtime</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+	</dependencies>
+	
+	<profiles>
+		<profile>
+			<id>pear</id>
+
+			<properties>
+				<!-- This is the class of the component from which the PEAR file will 
+					be generated -->	
+				<uima.component.class>uk.ac.nactem.argo.components.typemapper.NactemTypeMapper</uima.component.class>
+			</properties>
+
+			<dependencies>
+				<!-- !!! VERY IMPORTANT !!! -->
+				<!-- All type system dependencies must be redeclared here but with their 
+					<scope> value set to provided. This is to prevent the type systems being 
+					included inside the generated PEAR file; type systems should be independently 
+					installed into an Argo instance. If a type system gets included inside a 
+					PEAR file then workflow executions will normally fail, complaining of missing 
+					classes associated with UIMA types. -->
+				<!-- Eventually Argo should support installation of components and type 
+					systems from Maven, which will automatically deal with type system dependencies 
+					and avoid the need for this profile. -->
+			</dependencies>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
@@ -68,14 +109,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.uima</groupId>
-				<artifactId>PearPackagingMavenPlugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>com.mycila</groupId>
@@ -97,12 +130,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr4-runtime</artifactId>
-			<version>4.5.3</version>
-		</dependency>
-	</dependencies>
 </project>
