@@ -31,8 +31,10 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.TypeSystem;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.descriptor.ResourceMetaData;
+import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import uk.ac.nactem.argo.components.typemapper.FSReference.ArrayReference;
@@ -48,7 +50,7 @@ import uk.ac.nactem.argo.components.typemapper.TypeMapBuilder.ParseException;
  * @author NaCTeM - National Centre of Text Mining
  */
 @ResourceMetaData(name="NaCTeM Type Mapper")
-public class NactemTypeMapper extends CasAnnotator_ImplBase {
+public class NactemTypeMapper extends JCasAnnotator_ImplBase {
 	
 	/**
 	 * Definition of mappings from source types to target types.
@@ -85,7 +87,8 @@ public class NactemTypeMapper extends CasAnnotator_ImplBase {
 	}
 
 	@Override
-	public void process(CAS cas) throws AnalysisEngineProcessException {
+	public void process(JCas jcas) throws AnalysisEngineProcessException {
+		CAS cas = jcas.getCas();
 		FSIndexRepository indexRepo = cas.getIndexRepository();
 		if (indexRepo==null) return;
 
