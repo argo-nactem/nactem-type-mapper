@@ -24,7 +24,7 @@
 	<parent>
 		<groupId>uk.ac.nactem.argo</groupId>
 		<artifactId>argo-starter-components</artifactId>
-		<version>0.5</version>
+		<version>0.5.1</version>
 	</parent>
 
 	<groupId>uk.ac.nactem.argo.components</groupId>
@@ -33,11 +33,26 @@
 
 	<name>Nactem Type Mapper</name>
 	<inceptionYear>2016</inceptionYear>
+	<url>https://github.com/argo-nactem/nactem-type-mapper</url>
 	<description>A UIMA component which is able to create new annotations from existing ones, using a mapping definition language</description>
 	<organization>
 		<name>The National Centre for Text Mining (NaCTeM), University of Manchester</name>
 		<url>http://nactem.ac.uk</url>
 	</organization>
+	
+	<developers>
+		<developer>
+			<organization>NaCTeM</organization>
+			<organizationUrl>http://nactem.ac.uk</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/argo-nactem/nactem-type-mapper</connection>
+		<developerConnection>scm:git:git@github.com:argo-nactem/nactem-type-mapper.git</developerConnection>
+		<url>https://github.com/argo-nactem/nactem-type-mapper</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<licenses>
 		<license>
